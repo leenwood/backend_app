@@ -1,0 +1,13 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest:
+    allowed_methods_listener:  true
+    view:
+        view_response_listener:  true
+        formats:
+            json: true
+            html: true
+    format_listener:
+        enabled: true
+        rules:
+            - { path: '^/api', prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
+            - { path: '^/', prefer_extension: true, fallback_format: html, priorities: [ html ] }
