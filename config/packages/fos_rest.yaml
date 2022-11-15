@@ -1,6 +1,11 @@
 # Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
 fos_rest:
     allowed_methods_listener:  true
+    body_listener:
+        enabled: true
+        decoders:
+            json: fos_rest.decoder.json
+    param_fetcher_listener: true
     view:
         view_response_listener:  true
         formats:
@@ -10,4 +15,4 @@ fos_rest:
         enabled: true
         rules:
             - { path: '^/api', prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
-            - { path: '^/', prefer_extension: true, fallback_format: html, priorities: [ html ] }
+            - { path: '^/', prefer_extension: true, fallback_format: json, priorities: [ json, html ] }
